@@ -30,4 +30,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  handleBasicAuthLogin(){
+    this.authenticationService.executeAuth(this.username,this.password).subscribe(
+      data => {
+        console.log(data);
+        this.invalidLogin = false;
+        this.router.navigate(['welcome',this.username])
+      },
+      error => {
+        console.log(error);
+        this.invalidLogin = true;
+      }
+    )
+    
+    } 
+
 }

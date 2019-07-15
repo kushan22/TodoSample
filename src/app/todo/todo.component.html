@@ -1,3 +1,28 @@
-<p>
-  todo works!
-</p>
+<div class="container">
+
+
+<h3>Welcome, Now you can create or update your Todo Here</h3>
+<div class="aler alert-warning" *ngIf="todoForm.invalid && todoForm.dirty">Enter Valid Values</div>
+<form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
+  <fieldset class="form-group">
+    <label>Description</label>
+    <input type="text" [(ngModel)]="todo.todoDescription" class="form-control" name="description" required="required"/>
+  </fieldset>
+  
+  <fieldset class="form-group">
+    <label>Target Date</label>
+    <input type="date" 
+    [(ngModel)] ="todo.targetDate"
+    (ngModelChange)="todo.targetDate = $event" 
+    class="form-control" name="targetDate" required="required"/>
+  </fieldset>
+  
+  <button type="submit" class="btn btn-success">Save</button>
+
+</form>
+
+
+  
+  
+
+</div>
